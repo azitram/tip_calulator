@@ -43,8 +43,10 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Switch
+import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -52,6 +54,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.modifier.modifierLocalMapOf
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -171,7 +174,19 @@ fun EditNumberField(
         label = { Text(stringResource(label)) },
         singleLine = true,
         keyboardOptions = keyboardOptions,
-        leadingIcon = { Icon(painter= painterResource(id = leadingIcon), null)}
+        leadingIcon = { Icon(
+            painter= painterResource(id = leadingIcon),
+            null,
+            tint = Color(0xFF000042)
+            )},
+        colors = TextFieldDefaults.colors(
+            unfocusedContainerColor = Color(0xFFCADEEF),
+            unfocusedLabelColor = Color(0xFF000042),
+            focusedContainerColor = Color(0xFFCADEEF),
+            focusedLabelColor = Color(0xFF000042),
+            focusedIndicatorColor = Color(0xFF000042),
+            cursorColor = Color(0xFF000042),
+        )
         )
 }
 
@@ -192,6 +207,12 @@ fun RoundTip(
         Switch(
             checked = roundUp,
             onCheckedChange = onRoundUpChanged,
+            colors = SwitchDefaults.colors(
+                checkedTrackColor = Color(0xFFCADEEF),
+                checkedThumbColor = Color(0xFF000042),
+                uncheckedThumbColor = Color(0xFF777777),
+                uncheckedTrackColor = Color(0xFFD3D3D3)
+            ),
             modifier = Modifier
                 .fillMaxWidth()
                 .wrapContentWidth(Alignment.End)
